@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 public class NovaPropostaRequest {
 
     @NotBlank
-    @CPForCNPJ
+   // @CPForCNPJ
     private String documento;
 
     @NotBlank(message = "Nome é obrigatório")

@@ -27,6 +27,9 @@ public class NovaProposta {
     @NotNull
     @Positive
     private BigDecimal salario;
+    @Enumerated(EnumType.STRING)
+    private StatusRestricao statusRestricao = StatusRestricao.NAO_ANALISADO;
+
 
     @Deprecated
     public NovaProposta() {
@@ -61,5 +64,9 @@ public class NovaProposta {
 
     public BigDecimal getSalario() {
         return salario;
+    }
+
+    public void setStatusRestricao(StatusRestricao statusRestricao) {
+        this.statusRestricao = statusRestricao;
     }
 }
