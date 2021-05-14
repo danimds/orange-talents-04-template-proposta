@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @FeignClient(value = "solicitacao", url = "http://127.0.0.1:9999/api")
 @Component
-public interface AnaliseRestricaoCliente {
+public interface AnaliseRestricaoClient {
 
     @RequestMapping(method = RequestMethod.POST, value = "/solicitacao")
     public AnaliseRestricaoResponse analisaRestricao(AnaliseRestricaoRequest request);

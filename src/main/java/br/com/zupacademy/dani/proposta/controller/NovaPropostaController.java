@@ -1,6 +1,6 @@
 package br.com.zupacademy.dani.proposta.controller;
 
-import br.com.zupacademy.dani.proposta.clients.AnaliseRestricaoCliente;
+import br.com.zupacademy.dani.proposta.clients.AnaliseRestricaoClient;
 import br.com.zupacademy.dani.proposta.controller.request.AnaliseRestricaoRequest;
 import br.com.zupacademy.dani.proposta.controller.request.NovaPropostaRequest;
 import br.com.zupacademy.dani.proposta.controller.response.AnaliseRestricaoResponse;
@@ -26,7 +26,7 @@ public class NovaPropostaController {
     private NovaPropostaRepository novaPropostaRepository;
 
     @Autowired
-    AnaliseRestricaoCliente analiseRestricaoClient;
+    AnaliseRestricaoClient analiseRestricaoClient;
 
     @PostMapping
     public ResponseEntity<String> cadastrarNovaProposta(@RequestBody @Valid NovaPropostaRequest request, UriComponentsBuilder uriBuilder) {
@@ -56,7 +56,6 @@ public class NovaPropostaController {
         } catch (FeignException.UnprocessableEntity e){
             status = StatusRestricao.NAO_ELEGIVEL;
         }
-        novaProposta.setStatusRestricao(status);;
+        novaProposta.setStatusRestricao(status);
     }
-
 }

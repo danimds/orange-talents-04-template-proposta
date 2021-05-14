@@ -15,7 +15,7 @@ public class NovaProposta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
-    @Column(unique=true)
+    @Column(unique = true)
     private String documento;
     @NotBlank
     private String nome;
@@ -28,7 +28,8 @@ public class NovaProposta {
     @Positive
     private BigDecimal salario;
     @Enumerated(EnumType.STRING)
-    private StatusRestricao statusRestricao = StatusRestricao.NAO_ANALISADO;
+    public StatusRestricao statusRestricao = StatusRestricao.NAO_ANALISADO;
+    public String cartao;
 
 
     @Deprecated
@@ -43,8 +44,9 @@ public class NovaProposta {
         this.salario = salario;
     }
 
-
-    public Long getId() { return id; }
+    public Long getId() {
+        return id;
+    }
 
     public String getDocumento() {
         return documento;
@@ -68,5 +70,17 @@ public class NovaProposta {
 
     public void setStatusRestricao(StatusRestricao statusRestricao) {
         this.statusRestricao = statusRestricao;
+    }
+
+    public StatusRestricao getStatusRestricao() {
+        return statusRestricao;
+    }
+
+    public String getIdCartao() {
+        return cartao;
+    }
+
+    public void setCartao(String cartao) {
+        this.cartao = cartao;
     }
 }
