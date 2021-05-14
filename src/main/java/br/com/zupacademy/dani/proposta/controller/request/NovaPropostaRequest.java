@@ -3,8 +3,6 @@ package br.com.zupacademy.dani.proposta.controller.request;
 import br.com.zupacademy.dani.proposta.modelo.NovaProposta;
 import br.com.zupacademy.dani.proposta.validacao.CPForCNPJ;
 import com.sun.istack.NotNull;
-
-import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
@@ -13,7 +11,7 @@ import java.math.BigDecimal;
 public class NovaPropostaRequest {
 
     @NotBlank
-   // @CPForCNPJ
+    @CPForCNPJ
     private String documento;
 
     @NotBlank(message = "Nome é obrigatório")
