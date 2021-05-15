@@ -1,6 +1,7 @@
 package br.com.zupacademy.dani.proposta.controller.response;
 
 import br.com.zupacademy.dani.proposta.modelo.NovaProposta;
+import br.com.zupacademy.dani.proposta.modelo.StatusRestricao;
 
 import java.math.BigDecimal;
 
@@ -12,6 +13,7 @@ public class NovaPropostaResponse {
     private String email;
     private String endereço;
     private BigDecimal salario;
+    public StatusRestricao statusRestricao = StatusRestricao.NAO_ANALISADO;
 
     public NovaPropostaResponse(NovaProposta novaProposta) {
 
@@ -45,6 +47,10 @@ public class NovaPropostaResponse {
 
     public BigDecimal getSalario() {
         return salario;
+    }
+
+    public StatusRestricao getStatusRestricao() {
+        return statusRestricao;
     }
 }
 

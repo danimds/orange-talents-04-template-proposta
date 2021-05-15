@@ -13,5 +13,4 @@ public interface NovaPropostaRepository extends JpaRepository <NovaProposta, Lon
     Optional<NovaProposta> findByDocumento(String documento);
 
     List<Optional<NovaProposta>> findByStatusRestricaoAndCartao(StatusRestricao status, String cartao);
-
 }

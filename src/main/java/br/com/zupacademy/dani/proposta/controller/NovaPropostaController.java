@@ -4,14 +4,16 @@ import br.com.zupacademy.dani.proposta.clients.AnaliseRestricaoClient;
 import br.com.zupacademy.dani.proposta.controller.request.AnaliseRestricaoRequest;
 import br.com.zupacademy.dani.proposta.controller.request.NovaPropostaRequest;
 import br.com.zupacademy.dani.proposta.controller.response.AnaliseRestricaoResponse;
+import br.com.zupacademy.dani.proposta.controller.response.NovaPropostaResponse;
 import br.com.zupacademy.dani.proposta.modelo.NovaProposta;
 import br.com.zupacademy.dani.proposta.modelo.RetornoRestricao;
 import br.com.zupacademy.dani.proposta.modelo.StatusRestricao;
+import br.com.zupacademy.dani.proposta.repository.NovaPropostaRepository;
 import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import br.com.zupacademy.dani.proposta.repository.NovaPropostaRepository;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
@@ -49,13 +51,15 @@ public class NovaPropostaController {
 
     private void analisaRestricao(NovaProposta novaProposta) {
         StatusRestricao status;
-        try{
+        try {
             AnaliseRestricaoResponse respostaCpf = analiseRestricaoClient.analisaRestricao(new AnaliseRestricaoRequest(novaProposta));
             assert respostaCpf.getResultadoSolicitacao().equals(RetornoRestricao.SEM_RESTRICAO);
             status = StatusRestricao.ELEGIVEL;
-        } catch (FeignException.UnprocessableEntity e){
+        } catch (FeignException.UnprocessableEntity e) {
             status = StatusRestricao.NAO_ELEGIVEL;
         }
         novaProposta.setStatusRestricao(status);
     }
+
+
 }
