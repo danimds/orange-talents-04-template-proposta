@@ -61,5 +61,14 @@ public class NovaPropostaController {
         novaProposta.setStatusRestricao(status);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<NovaPropostaResponse> detalhar(@PathVariable Long id) {
+        Optional<NovaProposta> existeProposta = novaPropostaRepository.findById(id);
+        if (existeProposta.isPresent()) {
+            return ResponseEntity.ok(new NovaPropostaResponse(existeProposta.get()));
+        }
+        return ResponseEntity.notFound().build();
+
+    }
 
 }
