@@ -1,4 +1,4 @@
-package br.com.zupacademy.dani.proposta.healthCheck;
+package br.com.zupacademy.dani.proposta.validacao;
 
 
 import org.springframework.boot.actuate.health.Health;

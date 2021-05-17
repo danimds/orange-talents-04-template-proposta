@@ -1,4 +1,4 @@
-package br.com.zupacademy.dani.proposta.modelo;
+package br.com.zupacademy.dani.proposta.analisecartao;
 
 public enum RetornoRestricao {
     COM_RESTRICAO, SEM_RESTRICAO

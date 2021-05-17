@@ -1,7 +1,6 @@
-package br.com.zupacademy.dani.proposta.controller.response;
+package br.com.zupacademy.dani.proposta.proposta;
 
-import br.com.zupacademy.dani.proposta.modelo.NovaProposta;
-import br.com.zupacademy.dani.proposta.modelo.StatusRestricao;
+import br.com.zupacademy.dani.proposta.analisecartao.StatusRestricao;
 
 import java.math.BigDecimal;
 
@@ -11,9 +10,9 @@ public class NovaPropostaResponse {
     private String documento;
     private String nome;
     private String email;
-    private String endereço;
+    private String endereco;
     private BigDecimal salario;
-    public StatusRestricao statusRestricao = StatusRestricao.NAO_ANALISADO;
+    private StatusRestricao statusRestricao;
 
     public NovaPropostaResponse(NovaProposta novaProposta) {
 
@@ -21,8 +20,9 @@ public class NovaPropostaResponse {
         this.documento = novaProposta.getDocumento();
         this.nome = novaProposta.getNome();
         this.email = novaProposta.getEmail();
-        this.endereço = novaProposta.getEndereço();
+        this.endereco = novaProposta.getEndereco();
         this.salario = novaProposta.getSalario();
+        this.statusRestricao = novaProposta.getStatusRestricao();
     }
 
     public Long getId() {
@@ -41,8 +41,8 @@ public class NovaPropostaResponse {
         return email;
     }
 
-    public String getEndereço() {
-        return endereço;
+    public String getEndereco() {
+        return endereco;
     }
 
     public BigDecimal getSalario() {

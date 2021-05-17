@@ -1,4 +1,4 @@
-package br.com.zupacademy.dani.proposta.error;
+package br.com.zupacademy.dani.proposta.validacao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;

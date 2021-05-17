@@ -1,9 +1,10 @@
-package br.com.zupacademy.dani.proposta.validacao;
+package br.com.zupacademy.dani.proposta.proposta;
 
 import org.hibernate.validator.constraints.CompositionType;
 import org.hibernate.validator.constraints.ConstraintComposition;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
+
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;

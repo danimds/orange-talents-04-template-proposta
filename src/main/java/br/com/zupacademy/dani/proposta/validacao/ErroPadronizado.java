@@ -1,4 +1,4 @@
-package br.com.zupacademy.dani.proposta.error;
+package br.com.zupacademy.dani.proposta.validacao;
 
 import java.util.Collection;
 

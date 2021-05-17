@@ -1,6 +1,6 @@
-package br.com.zupacademy.dani.proposta.modelo;
+package br.com.zupacademy.dani.proposta.proposta;
 
-
+import br.com.zupacademy.dani.proposta.analisecartao.StatusRestricao;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -23,25 +23,25 @@ public class NovaProposta {
     @Email
     private String email;
     @NotBlank
-    private String endereço;
+    private String endereco;
     @NotNull
     @Positive
     private BigDecimal salario;
     @Enumerated(EnumType.STRING)
-    public StatusRestricao statusRestricao = StatusRestricao.NAO_ANALISADO;
-    public String cartao;
+    private StatusRestricao statusRestricao;
+    private String cartao;
 
 
     @Deprecated
     public NovaProposta() {
     }
 
-    public NovaProposta(String documento, String nome, String email, String endereço, BigDecimal salario) {
+    public NovaProposta(String documento, String nome, String email, String endereco, BigDecimal salario) {
         this.documento = documento;
         this.nome = nome;
-        this.email = email;
-        this.endereço = endereço;
+        this.email = email;;
         this.salario = salario;
+        this.statusRestricao = StatusRestricao.NAO_ANALISADO;
     }
 
     public Long getId() {
@@ -60,8 +60,8 @@ public class NovaProposta {
         return nome;
     }
 
-    public String getEndereço() {
-        return endereço;
+    public String getEndereco() {
+        return endereco;
     }
 
     public BigDecimal getSalario() {

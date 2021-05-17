@@ -1,17 +1,12 @@
-package br.com.zupacademy.dani.proposta.controller;
+package br.com.zupacademy.dani.proposta.proposta;
 
-import br.com.zupacademy.dani.proposta.clients.AnaliseRestricaoClient;
-import br.com.zupacademy.dani.proposta.controller.request.AnaliseRestricaoRequest;
-import br.com.zupacademy.dani.proposta.controller.request.NovaPropostaRequest;
-import br.com.zupacademy.dani.proposta.controller.response.AnaliseRestricaoResponse;
-import br.com.zupacademy.dani.proposta.controller.response.NovaPropostaResponse;
-import br.com.zupacademy.dani.proposta.modelo.NovaProposta;
-import br.com.zupacademy.dani.proposta.modelo.RetornoRestricao;
-import br.com.zupacademy.dani.proposta.modelo.StatusRestricao;
-import br.com.zupacademy.dani.proposta.repository.NovaPropostaRepository;
+import br.com.zupacademy.dani.proposta.analisecartao.AnaliseRestricaoClient;
+import br.com.zupacademy.dani.proposta.analisecartao.AnaliseRestricaoRequest;
+import br.com.zupacademy.dani.proposta.analisecartao.AnaliseRestricaoResponse;
+import br.com.zupacademy.dani.proposta.analisecartao.RetornoRestricao;
+import br.com.zupacademy.dani.proposta.analisecartao.StatusRestricao;
 import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -35,16 +30,13 @@ public class NovaPropostaController {
 
         Optional<NovaProposta> resultado = novaPropostaRepository.findByDocumento(request.getDocumento());
         return resultado
-                .map(propostaExistente -> {
-                    return ResponseEntity.status(422).body("Proposta já existe no sistema");
-                })
+                .map(propostaExistente -> ResponseEntity.status(422).body("Proposta já existe no sistema"))
                 .orElseGet(() -> {
                     NovaProposta novaProposta = request.toModel();
 
                     analisaRestricao(novaProposta);
                     novaPropostaRepository.save(novaProposta);
                     URI uri = uriBuilder.path("/novaProposta/{id}").buildAndExpand(novaProposta.getId()).toUri();
-                    //return ResponseEntity.created(uri).body(new NovaPropostaResponse(novaProposta));
                     return ResponseEntity.created(uri).build();
                 });
     }

@@ -1,6 +1,4 @@
-package br.com.zupacademy.dani.proposta.controller.response;
-
-import br.com.zupacademy.dani.proposta.modelo.RetornoRestricao;
+package br.com.zupacademy.dani.proposta.analisecartao;
 
 public class AnaliseRestricaoResponse {
 

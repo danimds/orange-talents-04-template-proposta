@@ -1,10 +1,9 @@
-package br.com.zupacademy.dani.proposta.controller.request;
+package br.com.zupacademy.dani.proposta.proposta;
 
-import br.com.zupacademy.dani.proposta.modelo.NovaProposta;
-import br.com.zupacademy.dani.proposta.validacao.CPForCNPJ;
-import com.sun.istack.NotNull;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 
@@ -22,23 +21,23 @@ public class NovaPropostaRequest {
     private String email;
 
     @NotBlank(message = "Endereço é obrigatório")
-    private String endereço;
+    private String endereco;
 
     @NotNull
     @Positive(message = "Valor do salário é inválido")
     private BigDecimal salario;
 
 
-    public NovaPropostaRequest(String documento, String nome, String email, String endereço, BigDecimal salario) {
+    public NovaPropostaRequest(String documento, String nome, String email, String endereco, BigDecimal salario) {
         this.documento = documento;
         this.nome = nome;
         this.email = email;
-        this.endereço = endereço;
+        this.endereco = endereco;
         this.salario = salario;
     }
 
     public NovaProposta toModel () {
-        return new NovaProposta(this.documento, this.nome, this.email, this.endereço, this.salario);
+        return new NovaProposta(this.documento, this.nome, this.email, this.endereco, this.salario);
     }
 
     public String getDocumento() {
@@ -51,8 +50,8 @@ public class NovaPropostaRequest {
         return email;
     }
 
-    public String getEndereço() {
-        return endereço;
+    public String getEndereco() {
+        return endereco;
     }
 
     public BigDecimal getSalario() {

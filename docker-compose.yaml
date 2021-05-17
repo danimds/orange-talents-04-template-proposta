@@ -87,37 +87,37 @@ services:
       JAEGER_ENDPOINT: http://jaeger:14268/api/traces
       TZ: America/Fortaleza
 
-  propostas:
-    build:
-      dockerfile: Dockerfile
-      context: .
-    image: proposta
-    restart: on-failure
-    container_name: propostas
-    ports:
-    - "8081:8081"
-    depends_on:
-      - analise
-      - contas
-      - keycloak
-      - mysql
-    environment:
-      ANALISES_URL: http://analise:9999/api/solicitacao
-      CARTOES_URL: http://contas:8888/api/cartoes
-      DATABASE_URL: jdbc:mysql://mysql:3306/cdc_ot4?createDatabaseIfNotExist=true
-      DATABASE_USER: root
-      DATABASE_PASSWORD: root
-
-
-  mysql:
-    image: 'mysql:5.7'
-    volumes:
-      - volume-mysql:/var/lib/mysql
-    ports:
-      - 3305:3306
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: propostas
+#  propostas:
+#    build:
+#      dockerfile: Dockerfile
+#      context: .
+#    image: proposta
+#    restart: on-failure
+#    container_name: propostas
+#    ports:
+#    - "8081:8081"
+#    depends_on:
+#      - analise
+#      - contas
+#      - keycloak
+#      - mysql
+#    environment:
+#      ANALISES_URL: http://analise:9999/api/solicitacao
+#      CARTOES_URL: http://contas:8888/api/cartoes
+#      DATABASE_URL: jdbc:mysql://mysql:3306/cdc_ot4?createDatabaseIfNotExist=true
+#      DATABASE_USER: root
+#      DATABASE_PASSWORD: root
+#
+#
+#  mysql:
+#    image: 'mysql:5.7'
+#    volumes:
+#      - volume-mysql:/var/lib/mysql
+#    ports:
+#      - 3305:3306
+#    environment:
+#      MYSQL_ROOT_PASSWORD: root
+#      MYSQL_DATABASE: propostas
 
   transacoes:
     image: 'zupacademy/transacoes'
