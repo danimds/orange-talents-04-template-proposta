@@ -2,10 +2,12 @@ package br.com.zupacademy.dani.proposta.biometria;
 
 import br.com.zupacademy.dani.proposta.cartao.Cartao;
 
+import javax.validation.constraints.NotBlank;
 import java.util.Base64;
 
 public class BiometriaRequest {
 
+    @NotBlank
     private String fingerPrint;
 
     @Deprecated

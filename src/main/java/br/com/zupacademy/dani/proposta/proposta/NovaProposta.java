@@ -41,6 +41,7 @@ public class NovaProposta {
         this.nome = nome;
         this.email = email;;
         this.salario = salario;
+        this.endereco = endereco;
         this.statusRestricao = StatusRestricao.NAO_ANALISADO;
     }
 
