@@ -17,6 +17,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 authorizeRequests
                         .antMatchers(HttpMethod.GET, "/novaProposta/**").hasAuthority("SCOPE_meu-primeiro-escopo")
                         .antMatchers(HttpMethod.POST, "/novaProposta").hasAuthority("SCOPE_meu-primeiro-escopo")
+                        .antMatchers(HttpMethod.POST, "/bloqueioCartao").hasAuthority("SCOPE_meu-primeiro-escopo")
                         .antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
                         .anyRequest().authenticated()
         )

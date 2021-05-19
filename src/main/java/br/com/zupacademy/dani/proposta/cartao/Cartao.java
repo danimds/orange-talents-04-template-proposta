@@ -1,6 +1,7 @@
 package br.com.zupacademy.dani.proposta.cartao;
 
 import br.com.zupacademy.dani.proposta.biometria.Biometria;
+import br.com.zupacademy.dani.proposta.bloqueio.Bloqueio;
 import br.com.zupacademy.dani.proposta.proposta.NovaProposta;
 
 import javax.persistence.*;
@@ -21,6 +22,8 @@ public class Cartao {
     private LocalDateTime emitidoEm;
     @OneToMany(mappedBy = "cartao")
     private Set<Biometria> biometrias;
+    @OneToOne(cascade = CascadeType.MERGE) @JoinColumn(name = "bloqueio")
+    private Bloqueio bloqueio;
 
 
     public Cartao() {
@@ -47,4 +50,13 @@ public class Cartao {
     public LocalDateTime getEmitidoEm() {
         return emitidoEm;
     }
+
+    public boolean bloqueado(){
+        return this.bloqueio != null;
+    }
+
+    public void setBloqueio(Bloqueio bloqueio) {
+        this.bloqueio = bloqueio;
+    }
+
 }
