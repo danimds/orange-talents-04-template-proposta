@@ -3,6 +3,7 @@ package br.com.zupacademy.dani.proposta.viagem;
 import br.com.zupacademy.dani.proposta.cartao.Cartao;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -13,7 +14,7 @@ public class Viagem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
     private String destino;
-    private Date dataTermino;
+    private LocalDate dataTermino;
     private LocalDateTime instante = LocalDateTime.now();
     private String ipCliente;
     private String agenteDoUsuario;
@@ -25,7 +26,7 @@ public class Viagem {
     }
 
 
-    public Viagem(Cartao cartao, String destino, Date dataTermino, String ipCliente, String userAgent) {
+    public Viagem(Cartao cartao, String destino, LocalDate dataTermino, String ipCliente, String userAgent) {
         this.destino = destino;
         this.dataTermino = dataTermino;
         this.ipCliente = ipCliente;
@@ -41,7 +42,7 @@ public class Viagem {
         return destino;
     }
 
-    public Date getDataTermino() {
+    public LocalDate getDataTermino() {
         return dataTermino;
     }
 
