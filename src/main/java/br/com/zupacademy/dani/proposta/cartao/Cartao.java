@@ -24,6 +24,7 @@ public class Cartao {
     private Set<Biometria> biometrias;
     @OneToOne(cascade = CascadeType.MERGE) @JoinColumn(name = "bloqueio")
     private Bloqueio bloqueio;
+    public Boolean ativo = true;
 
 
     public Cartao() {
@@ -59,4 +60,11 @@ public class Cartao {
         this.bloqueio = bloqueio;
     }
 
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }
 }

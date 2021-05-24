@@ -93,7 +93,7 @@ services:
 #      context: .
 #    image: proposta
 #    restart: on-failure
-#    container_name: propostas
+#    container_name: propostasdocker-compd
 #    ports:
 #    - "8081:8081"
 #    depends_on:
