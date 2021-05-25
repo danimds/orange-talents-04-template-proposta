@@ -6,6 +6,8 @@ import br.com.zupacademy.dani.proposta.analisecartao.AnaliseRestricaoResponse;
 import br.com.zupacademy.dani.proposta.analisecartao.RetornoRestricao;
 import br.com.zupacademy.dani.proposta.analisecartao.StatusRestricao;
 import feign.FeignException;
+import io.opentracing.Span;
+import io.opentracing.Tracer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,14 +21,26 @@ import java.util.Optional;
 @RequestMapping("/novaProposta")
 public class NovaPropostaController {
 
+    private final Tracer tracer;
+
+    public NovaPropostaController(Tracer tracer) {
+        this.tracer = tracer;
+    }
+
+
     @Autowired
     private NovaPropostaRepository novaPropostaRepository;
 
     @Autowired
     AnaliseRestricaoClient analiseRestricaoClient;
 
+
+
     @PostMapping
     public ResponseEntity<String> cadastrarNovaProposta(@RequestBody @Valid NovaPropostaRequest request, UriComponentsBuilder uriBuilder) {
+
+        Span activeSpan = tracer.activeSpan();
+        activeSpan.setBaggageItem("user.email", "luram.archanjo@zup.com.br");
 
         Optional<NovaProposta> resultado = novaPropostaRepository.findByDocumento(request.getDocumento());
         return resultado
