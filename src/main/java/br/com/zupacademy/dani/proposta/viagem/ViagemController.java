@@ -34,6 +34,7 @@ public class ViagemController {
 
             if (viagemRequest.dataMaiorQueHoje(viagemRequest.getDataTermino()) == true) {
                 try {
+                    cartoesClient.retornaStatusAviso(cartao.getNumero(), viagemRequest);
                     viagemRequest.setIpCliente(request.getRemoteAddr());
                     viagemRequest.setUserAgent(request.getHeader("User-Agent"));
                     Viagem viagem = viagemRequest.toModel(procuraCartao.get());
