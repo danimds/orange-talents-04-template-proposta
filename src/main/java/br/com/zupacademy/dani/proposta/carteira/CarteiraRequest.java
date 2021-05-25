@@ -8,7 +8,7 @@ public class CarteiraRequest {
 
     @Email
     private String email;
-    private CarteiraOpcao carteira = CarteiraOpcao.NAO_ASSOCIADO;
+    private CarteiraOpcao carteira;
 
     public CarteiraRequest(String email, CarteiraOpcao carteira) {
         this.email = email;
@@ -24,6 +24,6 @@ public class CarteiraRequest {
     }
 
     public Carteira toModel(Cartao cartao) {
-        return new Carteira(cartao, this.email);
+        return new Carteira(cartao, this.email, this.carteira);
     }
 }

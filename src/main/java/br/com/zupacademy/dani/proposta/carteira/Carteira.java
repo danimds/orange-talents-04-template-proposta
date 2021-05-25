@@ -25,9 +25,10 @@ public class Carteira {
     public Carteira() {
     }
 
-    public Carteira(Cartao cartao, String email) {
+    public Carteira(Cartao cartao, String email, CarteiraOpcao carteiraOpcao) {
         this.cartao = cartao;
         this.email = email;
+        this.carteiraOpcao = carteiraOpcao;
     }
 
     public Long getId() {

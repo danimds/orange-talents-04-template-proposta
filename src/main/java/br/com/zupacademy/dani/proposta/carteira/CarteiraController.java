@@ -51,7 +51,6 @@ public class CarteiraController {
 
             carteiraRepository.save(carteira);
             try {
-                carteira.setCarteiraOpcao(CarteiraOpcao.ASSOCIADO);
                 carteiraRepository.save(carteira);
 
             } catch (Exception e) {
