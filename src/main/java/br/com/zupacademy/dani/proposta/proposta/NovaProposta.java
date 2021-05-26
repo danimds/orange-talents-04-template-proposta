@@ -1,6 +1,8 @@
 package br.com.zupacademy.dani.proposta.proposta;
 
 import br.com.zupacademy.dani.proposta.analisecartao.StatusRestricao;
+import br.com.zupacademy.dani.proposta.seguranca.EncryptToDatabase;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -15,7 +17,7 @@ public class NovaProposta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
-    @Column(unique = true)
+    @Column(unique = true) @Convert(converter = EncryptToDatabase.class)
     private String documento;
     @NotBlank
     private String nome;
